@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            width: 99%;
+            background-color: #f0ded7;
+            padding: 15px 8px;
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(78, 73, 73, 0.671);
+            z-index: 1000; /* Ensure it is above other content */
+        }    
+        .navbar a {
+            color: #111111;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1em;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .form-container {
+            max-width: 450px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(39, 35, 35, 0.979);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: rgb(244, 247, 244);
+        }
+        .form-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .form-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+</div>
+
+<div class="form-container">
+    <h2>Real Estate Price Prediction</h2>
+    <form id="predictionForm" method="POST" action="{{ url_for('predict') }}" onsubmit="return validateForm();">
+        <div class="form-group">
+            <label for="propertyType">Property Type:</label>
+            <select id="propertyType" name="propertyType">
+                <option value="">-- Select Property Type --</option>
+                <option value="1 BHK Apartment" {% if selected_property_type == "1 BHK Apartment" %}selected{% endif %}>1 BHK Apartment</option>
+                <option value="2 BHK Apartment" {% if selected_property_type == "2 BHK Apartment" %}selected{% endif %}>2 BHK Apartment</option>
+                <option value="3 BHK Apartment" {% if selected_property_type == "3 BHK Apartment" %}selected{% endif %}>3 BHK Apartment</option>
+                <option value="4 BHK Villa" {% if selected_property_type == "4 BHK Villa" %}selected{% endif %}>4 BHK Villa</option>
+                <option value="3 BHK Villa" {% if selected_property_type == "3 BHK Villa" %}selected{% endif %}>3 BHK Villa</option>
+                <option value="Independent House" {% if selected_property_type == "Independent House" %}selected{% endif %}>Independent House</option>
+            </select>
+            <div id="propertyTypeError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="areaInsqft">Area (sqft):</label>
+            <input type="number" id="areaInsqft" name="areaInsqft" step="1" value="{{ selected_area_insqft }}" required>
+            <div id="areaInsqftError" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="">-- Select Location --</option>
+                {% for location in locations %}
+                    <option value="{{ location }}" {% if selected_location == location %}selected{% endif %}>{{ location }}</option>
+                {% endfor %}
+            </select>
+            <div id="locationError" class="error-message"></div>
+        </div>
+        <button type="submit" class="form-button">Predict Price</button>
+    </form>
+    {% if error_message %}
+        <div class="error-message">{{ error_message }}</div>
+    {% endif %}
+    {% if predicted_price %}
+        <div class="result">
+            Predicted Price: {{ predicted_price }}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+
+        // Get the form fields
+        let areaInsqft = document.getElementById("areaInsqft").value;
+        let propertyType = document.getElementById("propertyType").value;
+        let location = document.getElementById("location").value;
+
+        // Clear previous error messages
+        document.getElementById("areaInsqftError").style.display = "none";
+        document.getElementById("propertyTypeError").style.display = "none";
+        document.getElementById("locationError").style.display = "none";
+
+        // Validate Area sqft
+        if (areaInsqft === "" || isNaN(areaInsqft) || parseFloat(areaInsqft) <= 300) {
+            document.getElementById("areaInsqftError").innerHTML = "Area sqft must be a number greater than 300.";
+            document.getElementById("areaInsqftError").style.display = "block";
+            isValid = false;
+        }
+
+        // Check for empty propertyType
+        if (!propertyType) {
+            document.getElementById("propertyTypeError").innerHTML = "Please select a property type.";
+            document.getElementById("propertyTypeError").style.display = "block";
+            isValid = false;
+        }
+
+        // Check for empty location
+        if (!location) {
+            document.getElementById("locationError").innerHTML = "Please select a location.";
+            document.getElementById("locationError").style.display = "block";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
+
+</body>
+</html>

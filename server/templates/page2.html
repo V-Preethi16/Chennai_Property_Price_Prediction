@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form with Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom gradient background for the login box */
+        body {
+            background-color: #000000; /* Solid black */
+            color: white; /* Text color to ensure readability */
+        }
+        .gradient-box {
+            background: linear-gradient(110deg, #ffffff, #000000, #333333, #ffffff);
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+    <div class="w-full max-w-md">
+        <form id="loginForm" class="gradient-box shadow-md rounded px-8 pt-6 pb-8 mb-4" action="index">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Login</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    Username
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="********">
+            </div>
+            <div id="error-message" class="error mb-4"></div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Sign In
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Hardcoded username and password
+        const correctUsername = 'preethi';
+        const correctPassword = 'preethivas';
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+            
+            // Get form elements
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            // Clear previous error messages
+            errorMessage.textContent = '';
+            
+            // Simple validation
+            if (username === '' || password === '') {
+                errorMessage.textContent = 'Please fill out both fields.';
+            } else if (username !== correctUsername || password !== correctPassword) {
+                errorMessage.textContent = 'Incorrect username or password.';
+            } else {
+                // Handle successful login
+                window.location.href = 'index';
+                // You can redirect to another page or handle further actions here
+                // window.location.href = 'dashboard.html'; // Example redirect
+            }
+        });
+    </script>
+</body>
+</html>

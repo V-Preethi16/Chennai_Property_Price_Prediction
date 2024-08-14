@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #19191ad7;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            max-width: 1300px;
+            margin: 20px;
+            padding: 30px;
+            background: linear-gradient(to bottom, rgba(123, 215, 228, 0.897), #e7a0e4e7);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .dashboard-header h1 {
+            margin: 10px;
+        }
+        .recent-activities, .highest-predicted-prices {
+            margin-bottom: 30px;
+        }
+        .recent-activities table, .highest-predicted-prices table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .recent-activities th, .highest-predicted-prices th,
+        .recent-activities td, .highest-predicted-prices td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .recent-activities th, .highest-predicted-prices th {
+            background-color: #dff0f8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Real Estate Dashboard</h1>
+        <a href="/index" style="text-decoration: none; color: #007bff;">Back to page</a>
+    </div>
+
+    <div class="recent-activities">
+        <h2>Recent Activities</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Type</th>
+                    <th>Area (sqft)</th>
+                    <th>Location</th>
+                    <th>Predicted Price</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for activity in recent_activities %}
+                    <tr>
+                        <td>{{ activity.property_type }}</td>
+                        <td>{{ activity.area_insqft }}</td>
+                        <td>{{ activity.location }}</td>
+                        <td>{{ activity.predicted_price }}</td>
+                        <td>{{ activity.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="highest-predicted-prices">
+        <h2>Highest Predicted Prices</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property Type</th>
+                    <th>Location</th>
+                    <th>Area (sqft)</th>
+                    <th>Predicted Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for price in highest_predicted_prices %}
+                    <tr>
+                        <td>{{ price.property_type }}</td>
+                        <td>{{ price.location }}</td>
+                        <td>{{ price.area_insqft }}</td>
+                        <td>{{ price.predicted_price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
