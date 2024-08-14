@@ -1,0 +1,348 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Light background color for a clean look */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 99%;
+    height: 60px;
+    background:linear-gradient(to bottom, rgb(77, 76, 76), rgba(242, 234, 252, 0.767)); /* Slightly increased opacity for better readability */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+header .logo {
+    font-size: 23px;
+    font-weight: bold;
+    display:flex
+    align-items:center
+}
+.logo-img {
+    width: 55px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 9px; /* Maintain aspect ratio */
+    margin-right: 10px; 
+    vertical-align: middle;/* Space between logo and text */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight menu on hover */
+    border-radius: 4px;
+}
+
+.hero {
+    background: url('https://wallpapers.com/images/hd/real-estate-digital-art-0kmi22tcj2x60lim.jpg');
+    background-size: cover; /* Added missing semicolon */
+    background-color: #625e639c;
+    text-align: center;
+    padding: 190px 10px;
+    margin-top: 60px; /* Adjusted for the fixed header */
+    position: relative;
+}
+/*.bg-image {
+    background: url('https://img.freepik.com/premium-photo/house-key-house-model-sunlight-background-mortgage-investment-real-estate-property-new-home-concept-generative-ai_379823-9653.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Optional: Keeps the background image fixed while scrolling */
+   /* width: 100%;
+    height: 100vh; /* Makes the background cover the entire viewport height */
+
+
+.hero-content {
+    background-color: #fcf5fd7a;
+    width: 1050px;/* Semi-transparent black background */
+    padding: 30px;
+    border-radius: 10px;
+    display: inline-block; /* Make the background size fit the content */
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    background-color: #968a53;
+    color: #0e0d0d;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+    transform: scale(0.95);
+}
+
+.hero button:hover {
+    background-color: #c1a55d; /* Darker shade on hover */
+}
+
+
+.featured-listings,
+.how-it-works,
+.testimonials,
+.about-us {
+    padding: 60px 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+.featured-listings{
+    background:linear-gradient(to bottom, rgba(235, 130, 11, 0.993), #fcf7fbe7);
+}
+.how-it-works{
+    background: linear-gradient(to bottom, rgb(43, 147, 199), rgba(186, 150, 233, 0.767));
+}
+.testimonials{
+    background: linear-gradient(to bottom, rgb(8, 13, 85), rgba(68, 218, 245, 0.767));;
+}
+.about-us{
+    background: linear-gradient(to bottom, rgb(43, 147, 199), rgba(186, 150, 233, 0.767));
+    padding: 40px 20px; /* Adjust padding as needed */
+    text-align: center;
+}
+.about-content {
+    font-size: 16px; /* Font size for the content */
+    line-height: 2; /* Line height for readability */
+    max-width: 1200px; /* Maximum width for the content box */
+    margin: 0 auto; /* Center the content */
+    color: #555; /* Text color */
+    padding: 0 10px; /* Padding to ensure text doesn't touch the edges */
+}
+
+.featured-listings h2,
+.how-it-works h2,
+.testimonials h2,
+.about-us h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #1f1e1e;
+}
+
+.property-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.property-card {
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.property-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.property-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.property-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.property-info p {
+    font-size: 20px;
+    color: #666;
+}
+
+.how-it-works .steps {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.how-it-works .step {
+    text-align: center;
+    width: 250px;
+}
+
+.how-it-works .step img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.how-it-works .step p {
+    font-size: 18px;
+    color: #555;
+}
+
+.reviews {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.review {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the review cards */
+    max-width: 300px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.review p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.review::before {
+    content: '“';
+    font-size: 50px;
+    color: rgba(224, 189, 114, 0.5); /* Gold-like color for the quotation mark */
+    position: absolute;
+    top: -10px;
+    left: 10px;
+}
+
+.review::after {
+    content: '”';
+    font-size: 50px;
+    color: rgba(224, 189, 114, 0.5);
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+}
+
+.review:hover {
+    background-color: #e0bd72; /* Gold-like background on hover */
+    color: #fff;
+    transform: scale(1.05);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.review:hover p {
+    color: #fff;
+}
+.team-member img {
+    width: 100px; /* Width of the profile picture */
+    height: 100px; /* Height of the profile picture */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the circle without distortion */
+    border: 2px solid #ddd; /* Optional: adds a border around the image */
+}
+footer {
+    background-color: #333; /* Dark background for contrast */
+    color: white; /* White text for readability */
+    padding: 40px 20px; /* Generous padding for spacing */
+    text-align: center; /* Center align text */
+    border-top: 4px solid #e0bd72; /* Decorative border on top */
+}
+
+footer .contact-info {
+    margin-bottom: 20px;
+}
+
+footer .contact-info p {
+    font-size: 16px;
+    margin: 0;
+}
+
+footer .social-media {
+    margin-bottom: 20px;
+}
+
+footer .social-media a {
+    margin: 0 10px;
+    color: #fff;
+}
+
+footer .social-media img {
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+}
+
+footer .quick-links {
+    margin-bottom: 20px;
+}
+
+footer .quick-links a {
+    color: #e0bd72; /* Light color for links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+footer .quick-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+footer .newsletter-signup {
+    margin-top: 20px;
+}
+
+.newsletter-signup input[type="email"] {
+    padding: 10px;
+    width: 250px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.newsletter-signup button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #e0bd72;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.newsletter-signup button:hover {
+    background-color: #c1a55d; /* Darker shade on hover */
+}
