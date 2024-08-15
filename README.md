@@ -8,7 +8,11 @@
     Step 6: Generate Mean squared error(mse),R-squared error using linear regression model and random forest model.Compare both mse,R^2 values and found that linear regression model is 
             performing well compared to random forest.
     Step 7: Write a python flask server in Visual Studio Code(IDE) that uses the saved model to serve http requests and inreturn get response from server.
-    Step 8: Build a website using html, css and javascript that allows user to enter area sqft value, select location and property type and it will call python flask server to retrieve the             predicted price. Then recent predicted prices with time & date will be stored in dashboard page and it also shows the highest predicted price within recent activity.*
+    Step 8: Build a website using html, css and javascript that allows user to enter area sqft value, select location and property type and it will call python flask server to retrieve 
+            the predicted price. Then recent predicted prices with time & date will be stored in dashboard page and it also shows the highest predicted price within recent activity.*
+    Step 9: You can start the webpage by running this command (--python server1.py),flask server starts running and you can open the webpage by pasting this IP address 
+            (http:127.0.0.1:5000/) on chrome.
+            
 ****Technology and tools that this project covers,****
          -> Python
          -> matplotlib for data visualization
